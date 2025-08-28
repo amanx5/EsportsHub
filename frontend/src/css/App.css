@@ -16,3 +16,16 @@
     margin: 20px;
     border: 1px solid black;
 }
+
+.home__gameCard {
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid black;
+    width: 200px;
+    height: 300px;
+    font-size: large;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+}
