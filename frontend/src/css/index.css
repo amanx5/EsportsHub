@@ -1,5 +1,6 @@
 @import './App.css';
 @import './navbar.css';
+@import "tailwindcss";
 
 * {
     margin: 0;
