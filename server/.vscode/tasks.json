@@ -1,0 +1,27 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		// Nodemon task to run the backend with inspect flag for debugging
+		{
+			"label": "Run with Nodemon (Inspect)",
+			"type": "shell",
+			"command": "nodemon",
+			// "args": ["--inspect-brk", "index.js"],
+			"args": ["--inspect", "index.js"],
+			"options": {
+				"cwd": "U:/Code/EsportsHub/server"
+			},
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		// auto start both tasks when opening the workspace
+		// {
+		// 	"label": "Start All",
+		// 	"dependsOn": ["Start Frontend", "Run with Nodemon (Inspect)"],
+		// 	"dependsOrder": "parallel",
+		// 	"runOptions": {
+		// 		"runOn": "folderOpen"
+		// 	}
+		// }
+	]
+}

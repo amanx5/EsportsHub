@@ -20,15 +20,14 @@ import connectWithDB from './utility/dbconnector.js';
 
 const app = express();
 const PORT = 3000;
-
-
 connectWithDB();
 
-app.get('/', (req, res) => {
-    res.send('Hello World from Express!');
-});
-
+app.use('/resource', express.static("public"));
 app.use(routes);
+
+// app.get('/', (req, res) => {
+//     res.send('Hello World from Express!');
+// });
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);

@@ -1,5 +1,6 @@
 import {Router} from 'express';
-import trendinggamesrouter from './api/trendinggames.js';
+import apiRouter from './api/api.js';
+import trendingApiRouter from './api/trending.js';
 
 const router = Router();
 
@@ -9,7 +10,8 @@ const router = Router();
 // 3. db connection - dependent on the request, some apis may not need db connection
 
 // mount routers (attaching one router onto another at a specific path prefix.)
-// Whenever the request URL starts with /api/trendinggames, pass control to childRouter trendinggamesrouter to handle the rest.
-router.use('/api/trendinggames', trendinggamesrouter);
+// Whenever the request URL starts with /api/trending, pass control to childRouter to handle the rest.
+router.use('/', apiRouter);
+router.use('/api/trending', trendingApiRouter);
 
 export default router;
