@@ -1,0 +1,64 @@
+<svg
+							width='1em'
+							height='1em'
+							viewBox='0 0 48 48'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+						>
+							<path
+								d='M36.4 4.046 44.098 2l-1.992 7.752-24.51 24.51 1.401 1.402h3.065v3.445h-4.491l-4.074-4.073-6.09 6.09 2.436 2.436L7.407 46 .098 38.69l2.436-2.436L4.97 38.69l6.09-6.09-4.071-4.073v-4.491h3.445V27.1l1.457 1.457L36.4 4.046Z'
+								fill='url(#join-gradient_svg__a)'
+							></path>
+							<path
+								d='m16.967 20.825 5.705-5.706L11.6 4.046 3.902 2l1.992 7.752 11.073 11.073Z'
+								fill='url(#join-gradient_svg__b)'
+							></path>
+							<path
+								d='m31.033 23.481-5.705 5.705 5.076 5.077-1.4 1.4h-3.066v3.447h4.492l4.073-4.074 6.091 6.09-2.437 2.436L40.594 46l7.308-7.31-2.435-2.436-2.437 2.436-6.09-6.09 4.072-4.073v-4.491h-3.446V27.1l-1.456 1.457-5.077-5.077Z'
+								fill='url(#join-gradient_svg__c)'
+							></path>
+							<defs>
+								<linearGradient
+									id='join-gradient_svg__a'
+									x1='4.444'
+									y1='2'
+									x2='44.053'
+									y2='43.37'
+									gradientUnits='userSpaceOnUse'
+								>
+									<stop stop-color='#2EDF74'></stop>
+									<stop
+										offset='1'
+										stop-color='#608BFF'
+									></stop>
+								</linearGradient>
+								<linearGradient
+									id='join-gradient_svg__b'
+									x1='4.444'
+									y1='2'
+									x2='44.053'
+									y2='43.37'
+									gradientUnits='userSpaceOnUse'
+								>
+									<stop stop-color='#2EDF74'></stop>
+									<stop
+										offset='1'
+										stop-color='#608BFF'
+									></stop>
+								</linearGradient>
+								<linearGradient
+									id='join-gradient_svg__c'
+									x1='4.444'
+									y1='2'
+									x2='44.053'
+									y2='43.37'
+									gradientUnits='userSpaceOnUse'
+								>
+									<stop stop-color='#2EDF74'></stop>
+									<stop
+										offset='1'
+										stop-color='#608BFF'
+									></stop>
+								</linearGradient>
+							</defs>
+						</svg>

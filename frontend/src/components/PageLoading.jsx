@@ -1,6 +1,4 @@
-import React from 'react'
-
-export default function PageLoader() {
+export default function PageLoading() {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
         <div className="w-12 h-12 border-4 border-blue-600 rounded-full border-t-transparent animate-spin"></div>
@@ -8,3 +6,4 @@ export default function PageLoader() {
     </div>
   )
 }
+

@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		// npm task to start the frontend dev server
+		{
+			"label": "Start Frontend",
+			"type": "npm",
+			"script": "dev",
+			"path": "frontend",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+	]
+}

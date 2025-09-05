@@ -1,0 +1,145 @@
+<svg
+	width="1em"
+	height="1em"
+	viewBox="0 0 48 48"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<path
+		d="M46 4.592 34.336 16.256l-2.592-2.592L43.408 2 46 4.592Z"
+		fill="url(#organizer-gradient_svg__a)"
+	></path>
+	<path
+		d="M13.663 16.262 2 4.598l2.593-2.592L16.256 13.67l-2.593 2.592Z"
+		fill="url(#organizer-gradient_svg__b)"
+	></path>
+	<path
+		d="M25.83 24.918v13.75h7.334v3.665H14.831v-3.666h7.332v-13.75h3.666Z"
+		fill="url(#organizer-gradient_svg__c)"
+	></path>
+	<path
+		d="M23.996 2.002a5.499 5.499 0 1 0 0 11c3.04 0 5.5-2.46 5.5-5.5 0-3.036-2.46-5.5-5.5-5.5Z"
+		fill="url(#organizer-gradient_svg__d)"
+	></path>
+	<path
+		d="M20.33 14.835h7.333a3.67 3.67 0 0 1 3.666 3.666v3.667H16.663v-3.667a3.669 3.669 0 0 1 3.667-3.666Z"
+		fill="url(#organizer-gradient_svg__e)"
+	></path>
+	<path
+		d="M9.33 25.834a5.499 5.499 0 1 0 0 11c3.04 0 5.5-2.46 5.5-5.5 0-3.036-2.46-5.5-5.5-5.5Z"
+		fill="url(#organizer-gradient_svg__f)"
+	></path>
+	<path
+		d="M5.664 38.667h5.5V46H1.998v-3.667a3.67 3.67 0 0 1 3.666-3.666Z"
+		fill="url(#organizer-gradient_svg__g)"
+	></path>
+	<path
+		d="M36.829 38.667h5.5a3.669 3.669 0 0 1 3.666 3.666V46H36.83v-7.333Z"
+		fill="url(#organizer-gradient_svg__h)"
+	></path>
+	<path
+		d="M33.163 31.334a5.5 5.5 0 1 1 11 0c0 3.04-2.46 5.5-5.5 5.5-3.037 0-5.5-2.46-5.5-5.5Z"
+		fill="url(#organizer-gradient_svg__i)"
+	></path>
+	<defs>
+		<linearGradient
+			id="organizer-gradient_svg__a"
+			x1="5.998"
+			y1="2"
+			x2="45.614"
+			y2="40.087"
+			gradientUnits="userSpaceOnUse"
+		>
+			<stop stop-color="#FF6660"></stop>
+			<stop offset="1" stop-color="#AC2EDF"></stop>
+		</linearGradient>
+		<linearGradient
+			id="organizer-gradient_svg__b"
+			x1="5.998"
+			y1="2"
+			x2="45.614"
+			y2="40.087"
+			gradientUnits="userSpaceOnUse"
+		>
+			<stop stop-color="#FF6660"></stop>
+			<stop offset="1" stop-color="#AC2EDF"></stop>
+		</linearGradient>
+		<linearGradient
+			id="organizer-gradient_svg__c"
+			x1="5.998"
+			y1="2"
+			x2="45.614"
+			y2="40.087"
+			gradientUnits="userSpaceOnUse"
+		>
+			<stop stop-color="#FF6660"></stop>
+			<stop offset="1" stop-color="#AC2EDF"></stop>
+		</linearGradient>
+		<linearGradient
+			id="organizer-gradient_svg__d"
+			x1="5.998"
+			y1="2"
+			x2="45.614"
+			y2="40.087"
+			gradientUnits="userSpaceOnUse"
+		>
+			<stop stop-color="#FF6660"></stop>
+			<stop offset="1" stop-color="#AC2EDF"></stop>
+		</linearGradient>
+		<linearGradient
+			id="organizer-gradient_svg__e"
+			x1="5.998"
+			y1="2"
+			x2="45.614"
+			y2="40.087"
+			gradientUnits="userSpaceOnUse"
+		>
+			<stop stop-color="#FF6660"></stop>
+			<stop offset="1" stop-color="#AC2EDF"></stop>
+		</linearGradient>
+		<linearGradient
+			id="organizer-gradient_svg__f"
+			x1="5.998"
+			y1="2"
+			x2="45.614"
+			y2="40.087"
+			gradientUnits="userSpaceOnUse"
+		>
+			<stop stop-color="#FF6660"></stop>
+			<stop offset="1" stop-color="#AC2EDF"></stop>
+		</linearGradient>
+		<linearGradient
+			id="organizer-gradient_svg__g"
+			x1="5.998"
+			y1="2"
+			x2="45.614"
+			y2="40.087"
+			gradientUnits="userSpaceOnUse"
+		>
+			<stop stop-color="#FF6660"></stop>
+			<stop offset="1" stop-color="#AC2EDF"></stop>
+		</linearGradient>
+		<linearGradient
+			id="organizer-gradient_svg__h"
+			x1="5.998"
+			y1="2"
+			x2="45.614"
+			y2="40.087"
+			gradientUnits="userSpaceOnUse"
+		>
+			<stop stop-color="#FF6660"></stop>
+			<stop offset="1" stop-color="#AC2EDF"></stop>
+		</linearGradient>
+		<linearGradient
+			id="organizer-gradient_svg__i"
+			x1="5.998"
+			y1="2"
+			x2="45.614"
+			y2="40.087"
+			gradientUnits="userSpaceOnUse"
+		>
+			<stop stop-color="#FF6660"></stop>
+			<stop offset="1" stop-color="#AC2EDF"></stop>
+		</linearGradient>
+	</defs>
+</svg>
