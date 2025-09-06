@@ -1,37 +1,42 @@
+// static imports
 import '@/index.css';
-import Home from '@/home/Home.jsx';
-import Tournament from '@/tournament/Tournament.jsx';
-import RouteErrorPage from '@/components/RouteErrorPage.jsx';
-import { StrictMode } from 'react';
+import LoadingPage from '@/components/LoadingPage.jsx';
+import ErrorPage from '@/components/ErrorPage.jsx';
+import { lazy, Suspense, StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+// lazy imports
+const Home = lazy(() => import('@/home/Home.jsx'));
+const Tournament = lazy(() => import('@/tournament/Tournament.jsx'));
+
+// routes
 const router = createBrowserRouter([
 	{
 		path: '/',
-		errorElement: <RouteErrorPage />,
 		element: <Home />,
+		errorElement: <ErrorPage />,
 	},
-	// {
-	// 	path: '/tournament/',
-	// 	element: <Tournament/>
-	// },
 	{
 		path: '/tournament/:tournamentId?',	// ? optional param
+		// loader: fetchData,
 		element: <Tournament />,
 	},
-	{
-		path: '/tournament',
-		element: <Tournament />, // wrapper (parent): will always render
-		children: [
-			{ index: true, element: <Tournament /> }, // matches "/tournament"
+	// {
+		// path: '/tournament',
+		// element: <Tournament />, // wrapper (parent): will always render
+		// children: [
+			// { index: true, element: <Tournament /> }, // matches "/tournament"
 			// { path: ':tournamentId', element: <TournamentDetail /> }, // matches "/tournament/123"
-		],
-	},
+		// ],
+	// },
 ]);
 
+// rendering
 createRoot(document.getElementById('root')).render(
 	// <StrictMode>
-		<RouterProvider router={router} />
+		<Suspense fallback={<LoadingPage/>}>
+			<RouterProvider router={router} />
+		</Suspense>
 	// </StrictMode>
 );
