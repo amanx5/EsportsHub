@@ -7,7 +7,7 @@
 			"type": "shell",
 			"command": "nodemon",
 			// "args": ["--inspect-brk", "index.js"],
-			"args": ["--inspect", "index.js"],
+			"args": ["--inspect", "server.js"],
 			"options": {
 				"cwd": "U:/Code/EsportsHub/server"
 			},

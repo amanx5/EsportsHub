@@ -17,7 +17,7 @@ export default function Banner() {
 	];
 
 	return (
-		<section className="h-full px-[50px] py-8 sm:py-10 bg-[url('../../backgrounds/trending.jpg')] bg-cover bg-no-repeat select-none text-center">
+		<section className='h-full w-full px-[50px] py-12 sm:py-20 select-none text-center'>
 			<h1 className='text-xl sm:text-3xl lg:text-6xl font-medium text-white'>
 				Esports Tournaments
 			</h1>

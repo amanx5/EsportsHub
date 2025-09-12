@@ -1,8 +1,9 @@
-import MoreButton from './MoreButton.jsx';
+import MoreButton from './components/MoreButton.jsx';
+import { Link } from 'react-router-dom';
 import { Users2Icon, TrophyIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
-export default function () {
+export default function Trending() {
 	const trendingSection = useRef(null);
 	const gameCardWidth = useRef(0);
 	const gameCardGap = useRef(0);
@@ -28,34 +29,7 @@ export default function () {
 		}
 	}
 
-	function calculateRequiredCards() {
-		const el = trendingSection.current;
-		const style = getComputedStyle(el);
-		const availableWidth =
-			el.clientWidth -
-			parseFloat(style.paddingLeft) -
-			parseFloat(style.paddingRight);
-
-		if (availableWidth < 250) {
-			return 0;
-		} else if (250 <= availableWidth && availableWidth < 500) {
-			gameCardWidth.current = 100;
-			gameCardGap.current = 15;
-		} else if (500 <= availableWidth && availableWidth < 1500) {
-			gameCardWidth.current = 150;
-			gameCardGap.current = 25;
-		} else if (1500 <= availableWidth) {
-			gameCardWidth.current = 200;
-			gameCardGap.current = 30;
-		}
-
-		const requiredCards = Math.floor(
-			availableWidth / (gameCardWidth.current + gameCardGap.current)
-		);
-		return requiredCards;
-	}
-
-	async function fetchGameCardsData(requiredCards) {
+	async function fetchGameCardsData() {
 		try {
 			const response = await fetch(
 				'/api/trending?limit=' + requiredCards
@@ -87,17 +61,19 @@ export default function () {
 	return (
 		<section
 			ref={trendingSection}
-			className='py-6 sm:py-10 px-[10%] flex flex-col items-center'
+			className='flex flex-col items-center
+						py-6 sm:py-10 px-[10%]'
 		>
 			{gameCardsData.length > 0 && (
 				<div>
+					{/* heading row*/}
 					<div className='flex px-4 justify-between items-center mb-2.5'>
-						{/* section heading - maintain same px as in game cards container*/}
+						{/* section heading - maintain same x padding as in game cards container*/}
 						<h2 className='text-lg sm:text-xl 2xl:text-2xl font-medium bg-gradient-to-r from-[#36fff1] to-[#b5b4ff] text-transparent bg-clip-text'>
 							Trending Games
 						</h2>
 						{/* see all button*/}
-						<MoreButton />
+						<MoreButton linkTo='tournament' />
 					</div>
 					{/* game cards container*/}
 					<div
@@ -106,18 +82,18 @@ export default function () {
 					>
 						{/* game card*/}
 						{gameCardsData.map((obj) => (
-							<a
+							<Link
 								key={obj._id}
 								style={{
 									width: gameCardWidth.current + 'px',
 									color: 'aqua',
 								}}
-								className='flex flex-col border border-black rounded-lg shadow-md card-zoom-05'
-								href={`explore?tournamentStatuses=NEW&gameId=${obj._id}`}
+								className='flex flex-col rounded-lg card-zoom-05'
+								to={`tournament?tournamentStatuses=NEW&gameId=${obj._id}`}
 							>
 								{/* game image*/}
 								<img
-									src={`resource/images/game-cards/${obj._id}.jpg`}
+									src={`../resource/images/game-cards/${obj._id}.jpg`}
 									alt={obj.name}
 									className='w-full h-[80%] min-h-[80%] rounded-md object-cover'
 								/>
@@ -154,7 +130,7 @@ export default function () {
 										)}
 									</div>
 								</div>
-							</a>
+							</Link>
 						))}
 					</div>
 				</div>

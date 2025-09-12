@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        // Debug UI along with running dev env (using Vite)
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "UI",
+        //     "runtimeExecutable": "npm",
+        //     "runtimeArgs": [
+        //         "run",
+        //         "dev"
+        //     ],
+        //     "cwd": "${workspaceFolder}/ui",
+        //     "console": "integratedTerminal"
+        // },
+    ]
+}

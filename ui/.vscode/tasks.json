@@ -1,12 +1,12 @@
 {
 	"version": "2.0.0",
 	"tasks": [
-		// npm task to start the frontend dev server
+		// npm task to start the UI dev server
 		{
-			"label": "Start Frontend",
+			"label": "Start UI",
 			"type": "npm",
 			"script": "dev",
-			"path": "frontend",
+			"path": "ui",
 			"isBackground": true,
 			"problemMatcher": []
 		},
