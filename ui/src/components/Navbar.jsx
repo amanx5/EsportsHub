@@ -3,6 +3,8 @@ import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { pagesConfig } from '../config/pages';
 
+let NavData;
+     
 export default function Navbar() {
 	const pagesConfigEntries = Object.entries(pagesConfig);
 
@@ -26,6 +28,7 @@ export default function Navbar() {
 	);
 
 	const [enableMobileMenu, setEnableMobileMenu] = useState(false);
+	NavData = {enableMobileMenu, setEnableMobileMenu};
 
 	return (
 		<NavRoot>
@@ -33,8 +36,6 @@ export default function Navbar() {
 				<NavLayout>
 					<HomeLink
 						config={home}
-						enableMobileMenu={enableMobileMenu}
-						setEnableMobileMenu={setEnableMobileMenu}
 					/>
 					<DesktopLayout>
 						<DesktopLeftMenu>
@@ -55,8 +56,6 @@ export default function Navbar() {
 						</DesktopRightMenu>
 					</DesktopLayout>
 					<MobileMenuToggleButton
-						enableMobileMenu={enableMobileMenu}
-						setEnableMobileMenu={setEnableMobileMenu}
 					/>
 				</NavLayout>
 			</NavWidthController>
@@ -66,8 +65,6 @@ export default function Navbar() {
 						<MobileMenuItem
 							key={pageId}
 							config={pageConfig}
-							enableMobileMenu={enableMobileMenu}
-							setEnableMobileMenu={setEnableMobileMenu}
 						/>
 					))}
 				</MobileMenu>
@@ -98,7 +95,9 @@ function NavLayout({ children }) {
 }
 
 // HomeLink
-function HomeLink({ config, enableMobileMenu, setEnableMobileMenu }) {
+function HomeLink({ config }) {
+	const { enableMobileMenu, setEnableMobileMenu } = NavData;
+
 	return (
 		<Link
 			onClick={() => {
@@ -145,7 +144,9 @@ function DesktopMenuItem({ config }) {
 	);
 }
 
-function MobileMenuToggleButton({ enableMobileMenu, setEnableMobileMenu }) {
+function MobileMenuToggleButton() {
+	const { enableMobileMenu, setEnableMobileMenu } = NavData;
+
 	return (
 		<div className='md:hidden flex ml-auto'>
 			<button
@@ -168,7 +169,9 @@ function MobileMenu({ children }) {
 	return <div className='md:hidden bg-gray-800'>{children}</div>;
 }
 
-function MobileMenuItem({ config, enableMobileMenu, setEnableMobileMenu }) {
+function MobileMenuItem({ config }) {
+	const { enableMobileMenu, setEnableMobileMenu } = NavData;
+
 	return (
 		<NavLink
 			to={config.url}
