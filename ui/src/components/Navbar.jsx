@@ -2,8 +2,9 @@ import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { pagesConfig } from '../config/pages';
+import NavChildExternalFile from './NavChildExternalFile.jsx';
 
-let NavData;
+export let NavData;
      
 export default function Navbar() {
 	const pagesConfigEntries = Object.entries(pagesConfig);
@@ -28,11 +29,14 @@ export default function Navbar() {
 	);
 
 	const [enableMobileMenu, setEnableMobileMenu] = useState(false);
+
+	// NavData gets reassigned on every re render, so child components import NavData will get updated value on rerender
 	NavData = {enableMobileMenu, setEnableMobileMenu};
 
 	return (
 		<NavRoot>
 			<NavWidthController>
+				<NavChildExternalFile/>
 				<NavLayout>
 					<HomeLink
 						config={home}
