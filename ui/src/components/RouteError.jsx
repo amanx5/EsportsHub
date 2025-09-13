@@ -10,7 +10,7 @@ export default function RouteError({}) {
 			: false;
 
 	return (
-		<div className='flex items-center justify-center min-h-screen bg-gray-100'>
+		<div className='flex items-center justify-center h-full'>
 			<div className='bg-white shadow-lg rounded-2xl p-8 max-w-md text-center'>
 				<h1 className='text-4xl font-bold text-red-500 mb-4'>
 					{error.status || 'Error'}

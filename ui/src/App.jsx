@@ -9,25 +9,33 @@ export default function App({ pageId }) {
 	useTitle(title);
 
 	return (
-		<AppWrapper>
+		<AppRoot>
 			<Navbar />
 			<Suspense fallback={<Loader style={style} />}>
-				<PageWrapper style={style}>
-					<Page />
-				</PageWrapper>
+				<PageRoot style={style}>
+					<PageWidthController>
+						<Page />
+					</PageWidthController>
+				</PageRoot>
 			</Suspense>
-		</AppWrapper>
+		</AppRoot>
 	);
 }
 
-function AppWrapper({ children }) {
-	return <div className='flex flex-col h-full w-full'>{children}</div>;
+function AppRoot({ children }) {
+	return <div className='flex flex-col w-full h-full'>{children}</div>;
 }
 
-function PageWrapper({ style, children }) {
+function PageRoot({ style, children }) {
 	return (
-		<main style={style} className={'px-[10%] flex-1 w-full'}>
+		<main style={style} className={'flex-1 w-full'}>
 			{children}
 		</main>
+	);
+}
+
+function PageWidthController({ children}) {
+	return (
+		<div className='max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8'>{children}</div>
 	);
 }

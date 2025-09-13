@@ -7,11 +7,6 @@ body,
 	height: 100%; /* to stretch root */
 }
 
-.width-control {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-}
-
-
 .card-zoom,
 .card-zoom-05 {
 	transition: transform 0.2s ease-out;

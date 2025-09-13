@@ -8,8 +8,9 @@ export default function Navbar() {
 
 	const home = pagesConfigEntries.find(([pageId, _]) => pageId === 'home')[1];
 
+	const isUser = false;
 	const allItems = pagesConfigEntries.filter(
-		([_, pageConfig]) => 'navConfig' in pageConfig
+		([_, pageConfig]) => pageConfig.navConfig?.[isUser ? 'user' : 'guest']
 	);
 
 	const desktopItemsLeft = allItems.filter(
@@ -28,37 +29,37 @@ export default function Navbar() {
 
 	return (
 		<NavRoot>
-			<WidthController>
+			<NavWidthController>
 				<NavLayout>
 					<HomeLink
 						config={home}
 						enableMobileMenu={enableMobileMenu}
 						setEnableMobileMenu={setEnableMobileMenu}
 					/>
-					<DesktopMenu>
-						<DesktopLayoutLeft>
+					<DesktopLayout>
+						<DesktopLeftMenu>
 							{desktopItemsLeft.map(([pageId, pageConfig]) => (
-								<DesktopLayoutItem
+								<DesktopMenuItem
 									key={pageId}
 									config={pageConfig}
 								/>
 							))}
-						</DesktopLayoutLeft>
-						<DesktopLayoutRight>
+						</DesktopLeftMenu>
+						<DesktopRightMenu>
 							{desktopItemsRight.map(([pageId, pageConfig]) => (
-								<DesktopLayoutItem
+								<DesktopMenuItem
 									key={pageId}
 									config={pageConfig}
 								/>
 							))}
-						</DesktopLayoutRight>
-					</DesktopMenu>
-					<MobileSubMenuToggleButton
+						</DesktopRightMenu>
+					</DesktopLayout>
+					<MobileMenuToggleButton
 						enableMobileMenu={enableMobileMenu}
 						setEnableMobileMenu={setEnableMobileMenu}
 					/>
 				</NavLayout>
-			</WidthController>
+			</NavWidthController>
 			{enableMobileMenu && (
 				<MobileMenu>
 					{mobileItems.map(([pageId, pageConfig]) => (
@@ -75,17 +76,17 @@ export default function Navbar() {
 	);
 }
 
-// NavRoot: sticky | position | color scheme
+// NavRoot: sticky | position | bg
 function NavRoot({ children }) {
 	return (
-		<nav className='bg-gray-900 text-white sticky top-0 z-50'>
+		<nav className='sticky top-0 z-50 bg-gradient-to-r from-black via-slate-800 to-black shadow-lg'>
 			{children}
 		</nav>
 	);
 }
 
-// WidthController: Maxwidth | Margin | Padding
-function WidthController({ children }) {
+// WidthController: MaxWidth | Margin | Padding
+function NavWidthController({ children }) {
 	return (
 		<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>{children}</div>
 	);
@@ -93,7 +94,7 @@ function WidthController({ children }) {
 
 // NavLayout: Flex | Height | Alignment
 function NavLayout({ children }) {
-	return <div className='flex h-16 gap-10 items-center'>{children}</div>;
+	return <div className='h-16 flex gap-10 items-center'>{children}</div>;
 }
 
 // HomeLink
@@ -106,32 +107,37 @@ function HomeLink({ config, enableMobileMenu, setEnableMobileMenu }) {
 				}
 			}}
 			to='/'
-			className='text-xl font-bold text-amber-100'
+			className='text-white text-2xl font-bold italic'
 		>
 			{config.title}
 		</Link>
 	);
 }
 
-function DesktopMenu({ children }) {
+function DesktopLayout({ children }) {
 	return (
-		<div className='hidden md:flex justify-center flex-1'>{children}</div>
+		<div className='hidden md:flex justify-between flex-1'>{children}</div>
 	);
 }
-function DesktopLayoutLeft({ children }) {
+
+function DesktopLeftMenu({ children }) {
 	return <div className='flex space-x-6'>{children}</div>;
 }
 
-function DesktopLayoutItem({ config }) {
+function DesktopRightMenu({ children }) {
+	return <div className='flex space-x-6'>{children}</div>;
+}
+
+function DesktopMenuItem({ config }) {
 	return (
 		<NavLink
 			to={config.url}
 			className={({ isActive, isPending }) =>
 				isActive
-					? 'text-blue-500 font-bold'
+					? 'text-blue-200 text-lg font-medium'
 					: isPending
 					? ''
-					: 'text-white font-bold hover:underline'
+					: 'text-white text-lg font-medium'
 			}
 		>
 			{config.title}
@@ -139,23 +145,19 @@ function DesktopLayoutItem({ config }) {
 	);
 }
 
-function DesktopLayoutRight({ children }) {
-	return <div className='flex'>{children}</div>;
-}
-
-function MobileSubMenuToggleButton({ enableMobileMenu, setEnableMobileMenu }) {
+function MobileMenuToggleButton({ enableMobileMenu, setEnableMobileMenu }) {
 	return (
 		<div className='md:hidden flex ml-auto'>
 			<button
+				className='focus:outline-none  cursor-pointer text-white'
 				onClick={() => {
 					setEnableMobileMenu(!enableMobileMenu);
 				}}
-				className='focus:outline-none'
 			>
 				{enableMobileMenu ? (
-					<X className='w-6 h-6' /> // close icon
+					<X className='w-6 h-6' />
 				) : (
-					<Menu className='w-6 h-6' /> // hamburger icon
+					<Menu className='w-6 h-6' />
 				)}
 			</button>
 		</div>

@@ -1,11 +1,10 @@
 import App from '../App.jsx';
-import RouteError from '../components/RouteError.jsx';
 
 export const routes = [
 	{
 		path: '/',
 		element: <App pageId='home' />,
-		errorElement: <RouteError />,
+		errorElement: <App pageId='error' />,
 	},
 	{
 		path: '/tournament/:tournamentId?', // ? indicates optional param

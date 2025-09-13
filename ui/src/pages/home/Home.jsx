@@ -2,10 +2,10 @@ import CardSection from '../../components/CardSection.jsx';
 
 export default function Home({background}) {
 	return (
-		<main className='px-[10%] flex-1 w-full '>
+		<>
 			<BannerSection/>
 			<CardSection title='Trending Games' api='/api/trending?limit=10' />
-		</main>
+		</>
 	);
 }
 

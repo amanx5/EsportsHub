@@ -1,28 +1,58 @@
+/**
+ * Vite Configuration File
+ *
+ * This is a Node.js file used by Vite.
+ * Vite imports the default export from this file, which provides:
+ * - server configurations (host, proxy)
+ * - plugins (React, TailwindCSS)
+ * - path aliasing for cleaner imports
+ */
+
 import { defineConfig, loadEnv } from 'vite';
-import vite_react_plugin from '@vitejs/plugin-react';
+import reactPlugin from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
 /**
- * @param mode (development/production)
+ * Export the Vite configuration using defineConfig.
+ *
+ * `defineConfig` is a helper function provided by Vite to:
+ * - enable type inference for IDEs (auto-completion and validation)
+ * - allow dynamic configuration via a function that receives the current environment context
  */
-export default defineConfig(({ mode }) => {
-	// console.log(process.env); // contains system environment variables
-	// const env = loadEnv(mode, process.cwd(), '' );	// Loads all variables from .env.development / .env.production   and   system environment variables
-	const vite_env = loadEnv(mode, process.cwd()); // Loads only VITE_ prefixed vars from .env.development / .env.production
+export default defineConfig(getViteConfig);
+
+/**
+ * getViteConfig generates the actual Vite configuration object.
+ *
+ * @param {Object} configEnv - The environment context provided by Vite
+ *   - configEnv.mode: 'development' | 'production' | 'test'
+ *   - configEnv.command: 'serve' | 'build'
+ * @returns {Object} Vite configuration object
+ */
+function getViteConfig(configEnv) {
+	/**
+	 * Load environment variables for the current mode.
+	 *
+	 * loadEnv returns only variables prefixed with `VITE_` from .env.development/.env.production by default.
+	 * To get all variables from .env.development/.env.production and system variables, pass '' as 3rd argument
+	 * To access only system environment variables, use process.env
+	 */
+	const env = loadEnv(configEnv.mode, process.cwd());
 
 	return {
 		server: {
+			host: true, // Allow access from LAN
 			proxy: {
-				'/api': vite_env.VITE_API_URL,
-				'/resource': vite_env.VITE_RESOURCE_URL,
+				'/api': env.VITE_API_URL,
+				'/resource': env.VITE_RESOURCE_URL,
 			},
 		},
-		plugins: [vite_react_plugin(), tailwindcss()],
+		plugins: [reactPlugin(), tailwindcss()],
 		resolve: {
 			alias: {
-				'@': path.resolve(__dirname, './src'),
+				'@': path.resolve(__dirname, './src'), // Shortcut to the src directory
 			},
 		},
 	};
-});
+}

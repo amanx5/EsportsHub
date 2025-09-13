@@ -1,12 +1,19 @@
 import { lazy } from 'react';
-import app from './app.json';
+import about from './about.json';
 
 export const pagesConfig = {
+	error: {
+		title: about.name,
+		style: {
+			background: "lightgrey"
+		},
+		Page: lazy(() => import('../components/RouteError.jsx')),
+	},
 	home: {
 		url: '',
-		title: app.name,
+		title: about.name,
 		style: {
-			background: "linear-gradient(to top left, #020024, #090979, #00d4ff)"
+			background: "linear-gradient(to top left, #000010, #05004a, #0077aa)"
 		},
 		Page: lazy(() => import('../pages/home/Home.jsx')),
 	},
@@ -15,6 +22,8 @@ export const pagesConfig = {
 		title: 'Tournaments',
 		Page: lazy(() => import('../pages/tournament/Tournament.jsx')),
 		navConfig: {
+			guest: true,
+			user: true,
 			desktop: {
 				position: 'left'
 			},
@@ -27,8 +36,40 @@ export const pagesConfig = {
 		title: 'Leaderboard',
 		Page: lazy(() => import('../pages/leaderboard/Leaderboard.jsx')),
 		navConfig: {
+			guest: true,
+			user: true,
 			desktop: {
 				position: 'left'
+			},
+			mobile: {
+			}
+		}
+	},
+	login: {
+		url: '/login',
+		title: 'Sign In',
+		Page: lazy(() => import('../pages/profile/Profile.jsx')),
+		navConfig: {
+			guest: true,
+			user: false,
+			desktop: {
+				position: 'right',
+				icon: ''
+			},
+			mobile: {
+			}
+		}
+	},
+	register: {
+		url: '/register',
+		title: 'Sign Up',
+		Page: lazy(() => import('../pages/profile/Profile.jsx')),
+		navConfig: {
+			guest: true,
+			user: false,
+			desktop: {
+				position: 'right',
+				icon: ''
 			},
 			mobile: {
 			}
@@ -39,6 +80,8 @@ export const pagesConfig = {
 		title: 'Profile',
 		Page: lazy(() => import('../pages/profile/Profile.jsx')),
 		navConfig: {
+			guest: false,
+			user: true,
 			desktop: {
 				position: 'right',
 				icon: ''
