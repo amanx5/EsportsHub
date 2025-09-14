@@ -1,10 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { memo, useState } from 'react';
+import { memo, createContext, useContext, useState } from 'react';
 import { pagesConfig } from '../config/pages';
-import NavChildExternalFile from './NavChildExternalFile.jsx';
 
-export let NavData;
+export const NavContext = createContext();
      
 export default function Navbar() {
 	const pagesConfigEntries = Object.entries(pagesConfig);
@@ -30,13 +29,10 @@ export default function Navbar() {
 
 	const [enableMobileMenu, setEnableMobileMenu] = useState(false);
 
-	// NavData gets reassigned on every re render, so child components import NavData will get updated value on rerender
-	NavData = {enableMobileMenu, setEnableMobileMenu};
-
 	return (
+    	<NavContext.Provider value={{ enableMobileMenu, setEnableMobileMenu }}>
 		<NavRoot>
 			<NavWidthController>
-				<NavChildExternalFile/>
 				<NavLayout>
 					<HomeLink
 						config={home}
@@ -74,6 +70,7 @@ export default function Navbar() {
 				</MobileMenu>
 			)}
 		</NavRoot>
+    	</NavContext.Provider>
 	);
 }
 
@@ -99,13 +96,8 @@ function NavLayout({ children }) {
 }
 
 // HomeLink
-/**
- * memoised component will only render if any of its prop or state changes or the context
- * in this case, export trick will fail when as HomeLink won't rerender now when enableMobileMenu changes 
- * since it is not subscribed to enableMobileMenu
- */
 var HomeLink = memo(function HomeLink({ config }) {
-	const { enableMobileMenu, setEnableMobileMenu } = NavData;
+	const { enableMobileMenu, setEnableMobileMenu } = useContext(NavContext);
 
 	return (
 		<Link
@@ -155,7 +147,7 @@ function DesktopMenuItem({ config }) {
 }
 
 function MobileMenuToggleButton() {
-	const { enableMobileMenu, setEnableMobileMenu } = NavData;
+	const { enableMobileMenu, setEnableMobileMenu } = useContext(NavContext);
 
 	return (
 		<div className='md:hidden flex ml-auto'>
@@ -180,7 +172,7 @@ function MobileMenu({ children }) {
 }
 
 function MobileMenuItem({ config }) {
-	const { enableMobileMenu, setEnableMobileMenu } = NavData;
+	const { enableMobileMenu, setEnableMobileMenu } = useContext(NavContext);
 
 	return (
 		<NavLink
