@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { pagesConfig } from '../config/pages';
 import NavChildExternalFile from './NavChildExternalFile.jsx';
 
@@ -99,7 +99,12 @@ function NavLayout({ children }) {
 }
 
 // HomeLink
-function HomeLink({ config }) {
+/**
+ * memoised component will only render if any of its prop or state changes or the context
+ * in this case, export trick will fail when as HomeLink won't rerender now when enableMobileMenu changes 
+ * since it is not subscribed to enableMobileMenu
+ */
+var HomeLink = memo(function HomeLink({ config }) {
 	const { enableMobileMenu, setEnableMobileMenu } = NavData;
 
 	return (
@@ -113,9 +118,10 @@ function HomeLink({ config }) {
 			className='text-white text-2xl font-bold italic'
 		>
 			{config.title}
+			{" VALUE = " + enableMobileMenu}
 		</Link>
 	);
-}
+})
 
 function DesktopLayout({ children }) {
 	return (
